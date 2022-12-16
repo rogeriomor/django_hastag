@@ -20,7 +20,15 @@ class Filme(models.Model):
         return self.titulo
 
 
-#criar os episodios
+#criar os episodios, vai criar uma chave estrangeira aqui
+# depois que cria aqui precisa colocar no admin
+class Episodio(models.Model):
+    filme = models.ForeignKey("Filme", related_name="episodios", on_delete= models.CASCADE)
+    titulo = models.CharField(max_length=100)
+    video = models.URLField()
+
+    def __str__ (self):
+        return self.filme.titulo +"  -->  "+ self.titulo
 
 #criar o usuario
 
